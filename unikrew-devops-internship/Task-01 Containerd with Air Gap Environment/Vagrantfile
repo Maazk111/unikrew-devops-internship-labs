@@ -1,0 +1,27 @@
+Vagrant.configure("2") do |config|
+  config.vm.synced_folder ".", "/vagrant/shared", create: true
+
+  # Online Node
+  config.vm.define "containerd-online" do |online|
+    online.vm.box = "ubuntu/jammy64"
+    online.vm.hostname = "containerd-online"
+    online.vm.network "private_network", ip: "192.168.56.51"
+    online.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus = 2
+    end
+    online.vm.provision "shell", path: "provision-online.sh"
+  end
+
+  # Airgap Node
+  config.vm.define "containerd-airgap" do |offline|
+    offline.vm.box = "ubuntu/jammy64"
+    offline.vm.hostname = "containerd-airgap"
+    offline.vm.network "private_network", ip: "192.168.56.52"
+    offline.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus = 2
+    end
+    offline.vm.provision "shell", path: "provision-airgap.sh"
+  end
+end

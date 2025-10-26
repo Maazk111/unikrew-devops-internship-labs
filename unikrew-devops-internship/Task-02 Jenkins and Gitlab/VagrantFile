@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04"
+
+  # Common provisioning
+  config.vm.provision "shell", path: "scripts/common.sh"
+
+  # Jenkins VM
+  config.vm.define "jenkins" do |jenkins|
+    jenkins.vm.hostname = "jenkins"
+    jenkins.vm.network "private_network", ip: "192.168.56.11"
+    jenkins.vm.provider "virtualbox" do |vb|
+      vb.name = "Jenkins-Server"
+      vb.memory = 4096
+      vb.cpus = 2
+    end
+    jenkins.vm.provision "shell", path: "scripts/jenkins.sh"
+  end
+
+  # GitLab VM
+  config.vm.define "gitlab" do |gitlab|
+    gitlab.vm.hostname = "gitlab"
+    gitlab.vm.network "private_network", ip: "192.168.56.12"
+    gitlab.vm.provider "virtualbox" do |vb|
+      vb.name = "GitLab-Server"
+      vb.memory = 8192
+      vb.cpus = 2
+    end
+    gitlab.vm.provision "shell", path: "scripts/gitlab.sh"
+  end
+end

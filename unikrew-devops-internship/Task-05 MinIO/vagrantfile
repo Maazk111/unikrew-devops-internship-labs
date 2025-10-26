@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # ------------------------------------------------------
+  # VM Definition: MinIO Standalone Node
+  # ------------------------------------------------------
+  config.vm.define "minio-node" do |minio|
+    minio.vm.box      = "bento/ubuntu-22.04"
+    minio.vm.hostname = "minio-node"
+
+    # ------------------- Networking ---------------------
+    minio.vm.network "private_network", ip: "192.168.56.70"
+
+    # ------------------- Resources ----------------------
+    minio.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus   = 2
+      vb.name   = "minio-node"
+    end
+
+    # ------------------- Sync Folders -------------------
+    minio.vm.synced_folder "./data", "/mnt/data", create: true
+    minio.vm.synced_folder "./config", "/opt/config"
+    minio.vm.synced_folder "./scripts", "/opt/scripts"
+
+    # ------------------- Provisioning -------------------
+    minio.vm.provision "shell", path: "scripts/common.sh"
+    minio.vm.provision "shell", path: "scripts/minio.sh"
+  end
+
+  # Optional quality of life
+  config.vm.box_check_update = false
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+end

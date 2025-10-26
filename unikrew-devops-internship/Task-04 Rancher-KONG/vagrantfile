@@ -1,0 +1,77 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Base box
+  BOX_IMAGE = "ubuntu/jammy64" # Ubuntu 22.04
+  # Network plan
+  MASTER_IP = "192.168.56.10"
+  WORKER1_IP = "192.168.56.11"
+  WORKER2_IP = "192.168.56.12"
+  # Resources
+  MASTER_RAM = 4096
+  MASTER_CPU = 2
+  WORKER_RAM = 3072
+  WORKER_CPU = 2
+
+  config.vm.box_check_update = false
+  config.vm.synced_folder ".", "/vagrant", disabled: false
+  config.vm.synced_folder "./provision", "/provision", create: true
+  config.vm.synced_folder "./shared", "/vagrant/shared", create: true
+
+  # ---- Rancher Master (Control Plane) ----
+  config.vm.define "rancher-master" do |node|
+    node.vm.box = BOX_IMAGE
+    node.vm.hostname = "rancher-master"
+    node.vm.network "private_network", ip: MASTER_IP
+    node.vm.provider "virtualbox" do |vb|
+      vb.name = "rancher-master"
+      vb.memory = MASTER_RAM
+      vb.cpus   = MASTER_CPU
+    end
+    node.vm.provision "shell", path: "provision/common.sh"
+    node.vm.provision "shell", path: "provision/setup_master.sh", privileged: true
+  end
+
+  # ---- Worker 1 ----
+  config.vm.define "worker1" do |node|
+    node.vm.box = BOX_IMAGE
+    node.vm.hostname = "worker1"
+    node.vm.network "private_network", ip: WORKER1_IP
+    node.vm.provider "virtualbox" do |vb|
+      vb.name = "worker1"
+      vb.memory = WORKER_RAM
+      vb.cpus   = WORKER_CPU
+    end
+    node.vm.provision "shell", path: "provision/common.sh"
+    node.vm.provision "shell", path: "provision/setup_worker.sh", privileged: true
+  end
+
+  # ---- Worker 2 ----
+  config.vm.define "worker2" do |node|
+    node.vm.box = BOX_IMAGE
+    node.vm.hostname = "worker2"
+    node.vm.network "private_network", ip: WORKER2_IP
+    node.vm.provider "virtualbox" do |vb|
+      vb.name = "worker2"
+      vb.memory = WORKER_RAM
+      vb.cpus   = WORKER_CPU
+    end
+    node.vm.provision "shell", path: "provision/common.sh"
+    node.vm.provision "shell", path: "provision/setup_worker.sh", privileged: true
+  end
+
+  # --- Kong Gateway VM ---
+  config.vm.define "kong-gateway" do |kong|
+    kong.vm.box      = "bento/ubuntu-22.04"
+    kong.vm.hostname = "kong-gateway"
+    kong.vm.network "private_network", ip: "192.168.56.15"
+
+    kong.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end
+    kong.vm.provision "shell", path: "provision/setup_kong_vm.sh"
+    kong.vm.provision "shell", path: "provision/setup_kong_vm.sh"
+  end
+end
