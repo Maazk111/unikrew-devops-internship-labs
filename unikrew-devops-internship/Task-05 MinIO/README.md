@@ -18,6 +18,7 @@ This lab automates a complete MinIO object storage setup using Vagrant and shell
 ---
 
 ## 🧱 Architecture Overview
+
 ```
 +---------------------------------------------------------------+
 |                      Standalone MinIO VM                      |
@@ -38,9 +39,11 @@ This lab automates a complete MinIO object storage setup using Vagrant and shell
 |   common.sh + minio.sh  ->  Automated provisioning             |
 +---------------------------------------------------------------+
 ```
+
 ---
 
 ## ⚙️ Environment Configuration (`config/minio.env`)
+
 ```
 MINIO_ROOT_USER=minioadmin
 MINIO_ROOT_PASSWORD=minioadmin123
@@ -50,6 +53,7 @@ MINIO_VOLUMES="/mnt/data"
 ---
 
 ## 🌀 Provisioning Flow
+
 1️⃣ 🧰 **common.sh** — Updates system, installs base packages  
 2️⃣ ⚙️ **minio.sh** — Installs and configures MinIO server + client  
 3️⃣ 🔗 **alias.json** — Adds preconfigured `mc` alias  
@@ -58,16 +62,18 @@ MINIO_VOLUMES="/mnt/data"
 ---
 
 ## 💻 Access Details
-| Component | URL / Command | Description |
-|------------|----------------|--------------|
-| 🌐 Web Console | http://192.168.56.70:9001 | MinIO UI access |
+
+| Component          | URL / Command             | Description               |
+| ------------------ | ------------------------- | ------------------------- |
+| 🌐 Web Console     | http://192.168.56.70:9001 | MinIO UI access           |
 | 🔌 S3 API Endpoint | http://192.168.56.70:9000 | REST API for integrations |
-| 🧑‍💻 Access Key | minioadmin | Login username |
-| 🔒 Secret Key | minioadmin123 | Login password |
+| 🧑‍💻 Access Key      | minioadmin                | Login username            |
+| 🔒 Secret Key      | minioadmin123             | Login password            |
 
 ---
 
 ## 🧰 Verification Commands (inside VM)
+
 ```bash
 vagrant ssh minio-node
 mc alias list
@@ -76,6 +82,7 @@ mc ls local/devops-lab
 ```
 
 ### ✅ Expected Output
+
 ```
 [2025-10-26 21:15:01 UTC]  34B sample.txt
 ```
@@ -83,6 +90,7 @@ mc ls local/devops-lab
 ---
 
 ## 📸 Sample Output Screens
-| 🧩 MinIO Login | 🪣 Bucket View |
-|----------------|----------------|
+
+| 🧩 MinIO Login               | 🗑️ Bucket View                 |
+| ---------------------------- | ------------------------------ |
 | ![MinIO Login](images/1.png) | ![MinIO Browser](images/2.png) |
