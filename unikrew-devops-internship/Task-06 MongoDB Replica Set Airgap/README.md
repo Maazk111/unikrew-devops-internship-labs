@@ -15,11 +15,6 @@ To install and configure **MongoDB 6.0** in two phases:
 
 ---
 
-## 🧱 Architecture Diagram
-*(Insert diagram here later — showing 3 MongoDB nodes connected with replication arrows and admin authentication flow)*
-
----
-
 ## 🧩 Vagrant Configuration
 | VM Name | IP Address | Role |  
 |----------|------------|------|  
