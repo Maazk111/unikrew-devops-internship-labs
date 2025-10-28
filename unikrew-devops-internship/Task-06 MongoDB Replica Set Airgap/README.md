@@ -1,4 +1,4 @@
-# 🚀 Task-05: MongoDB Hybrid Air-Gap + Replica Set Setup (Auth + KeyFile)
+# 🚀 Task-06: MongoDB Hybrid Air-Gap + Replica Set Setup (Auth + KeyFile)
 
 ---
 
