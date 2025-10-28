@@ -1,0 +1,55 @@
+# # -----------------------------
+# # Vagrantfile for MongoDB Lab
+# # -----------------------------
+# Vagrant.configure("2") do |config|
+#   # Base image
+#   config.vm.box = "bento/ubuntu-22.04"
+#   config.vm.box_check_update = false
+
+#   # Common settings for all VMs
+#   config.vm.provider "virtualbox" do |vb|
+#     vb.memory = "2048"
+#     vb.cpus = 2
+#   end
+
+#   # MongoDB Node
+#   config.vm.define "mongodb-node" do |mongo|
+#     mongo.vm.hostname = "mongodb-node"
+#     mongo.vm.network "private_network", ip: "192.168.56.40"
+
+#     # Sync folder (for airgap packages or configs)
+#     mongo.vm.synced_folder "./sync", "/opt/sync", create: true
+
+#     # Provision script
+#     mongo.vm.provision "shell", path: "provision-mongo.sh"
+#   end
+# end
+
+
+# -------------------------------------------------
+# MongoDB Replica Set (3-Node) Vagrantfile
+# -------------------------------------------------
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04"
+  config.vm.box_check_update = false
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+  end
+
+  nodes = {
+    "mongo-1" => "192.168.56.41",
+    "mongo-2" => "192.168.56.42",
+    "mongo-3" => "192.168.56.43"
+  }
+
+  nodes.each do |name, ip|
+    config.vm.define name do |node|
+      node.vm.hostname = name
+      node.vm.network "private_network", ip: ip
+      node.vm.synced_folder "./sync", "/opt/sync", create: true
+      node.vm.provision "shell", path: "provision-mongo-replica.sh"
+    end
+  end
+end

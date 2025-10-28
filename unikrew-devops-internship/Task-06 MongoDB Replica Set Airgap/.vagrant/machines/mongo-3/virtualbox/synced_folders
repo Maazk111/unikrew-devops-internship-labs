@@ -1,0 +1,1 @@
+{"virtualbox":{"/opt/sync":{"create":true,"guestpath":"/opt/sync","hostpath":"C:/Users/WAJIZ.PK/Downloads/MongoDB/sync","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/WAJIZ.PK/Downloads/MongoDB","disabled":false,"__vagrantfile":true}}}
