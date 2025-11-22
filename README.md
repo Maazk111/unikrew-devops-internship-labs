@@ -8,6 +8,7 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 
 ---
 
+
 ## 💡 Practical Experience Gained
 - Designing **air-gapped infrastructures** for secure offline image management.
 - Building **CI/CD pipelines** integrating Jenkins, GitLab, and artifact repositories.
