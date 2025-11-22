@@ -16,7 +16,6 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 - Configuring **object storage (MinIO + S3 compatibility)**.
 - Implementing **MongoDB Replica Sets** for high availability and resilience.
 - Hosting **Jitsi Meet video-conferencing stack** using Docker Compose automation.
-
 ---
 
 ## 🧱 Architecture Summary
