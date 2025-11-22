@@ -104,6 +104,64 @@ Prosody (XMPP 5222/5347) ←→ Jicofo ←→ JVB (UDP 10000)
 ---
 
 
+# 🆕 Additional Learning & Responsibilities
+
+These items represent additional systems, tools, and concepts explored during the UniKrew Solutions DevOps Internship. Some were theoretical learnings used widely in fintech systems, while others involved hands-on troubleshooting and operational exposure.
+
+
+## 📘 Additional Systems & Concepts Learned
+
+
+- **VideoKYC Platform (Fintech Verification Flow)**  
+  Learned how digital KYC calls work: WebRTC sessions, meeting lifecycle, agent/customer flows, and backend verification APIs used in fintech onboarding.
+
+- **eKYC Identity Pipeline**  
+  Understood CNIC OCR extraction, face match, liveness detection, document verification, and how multi-service evaluation pipelines work in financial institutions.
+
+- **Jasper Reporting Server**  
+  Studied how enterprise reporting engines generate dashboards, use datasets, depend on databases, and handle authentication/report caching.
+
+- **Sentry Distributed Monitoring Architecture**  
+  Understood the role of Relay, Snuba, Symbolicator, Kafka, and Redis in error ingestion and distributed monitoring workflows.
+
+- **Rancher Enterprise Kubernetes Platform**  
+  Gained conceptual understanding of multi-cluster management, node roles, workloads, UI-driven deployments, and cluster health monitoring.
+
+
+
+## 🛠️ Troubleshooting & Operational Experience
+
+
+During the internship, I assisted with real DevOps troubleshooting across UAT and production-like environments:
+
+- **Disk & Storage Issues (UAT/Prod Exposure)**  
+  Identified and cleaned large logs, old snapshots, and unnecessary backup data to recover servers with full `/` and `/var` partitions.
+
+- **Docker & Container Recovery**  
+  Cleaned oversized container logs, removed unused images, restarted failing services, and helped stabilize containerized applications.
+
+- **Rancher & Kubernetes Assistance**  
+  Checked pod states, analyzed failing workloads, reviewed logs, and assisted with fixing k3s snapshot issues and node disk pressure problems.
+
+- **Application-Level Fixes**  
+  Supported teams in resolving Java service crashes, port conflicts, and API connectivity failures; helped restore normal operations during UAT outages.
+
+- **ACR Image Pull → Load → Push Workflow**  
+  Pulled Docker images from Azure Container Registry, loaded them into offline environments, retagged them, and pushed them back into ACR or local registries as part of image migration/validation tasks.
+
+- **Log Extraction & Preparation**  
+  Extracted and processed `.log.gz` files, formatted logs for teams, and supported RCA investigations.
+
+- **Cron & Backup Troubleshooting**  
+  Helped diagnose failing backup scripts, incorrect environment variables, and encryption workflow issues.
+- **Practical Scrum & Agile Exposure**  
+  Attended daily standups, understood sprint goals, task estimation, backlog refinement, and how DevOps activities integrate into Scrum cycles within a fintech engineering team.
+
+
+
+👉 *These troubleshooting tasks strengthened my ability to work in production-like environments, improving service stability, debugging skills, and overall operational awareness.*
+
+---
 ## 🧠 Skills and Technologies Demonstrated
 | Category | Stack / Concepts |
 |-----------|------------------|
