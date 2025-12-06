@@ -206,18 +206,19 @@ Expected: **Puppet login page should load successfully.**
 
 ## 🎓 **10. Key Learnings**
 
-- How Kubernetes works with containerd runtime
-- Importing OCI images using containerd
-- ClusterIP vs NodePort behavior in local clusters
-- Vagrant automation for multi-node Kubernetes
-- VirtualBox networking behavior
-- Troubleshooting common Kubernetes access issues
+- Working with Kubernetes + containerd runtime
+- Importing offline images with ctr
+- Understanding NodePort access limitations in host-only networks
+- Automating Kubernetes provisioning with Vagrant
+- Debugging networking + container runtime issues
+- Understanding how deployments roll out inside local Kubernetes clusters
 
 ---
 
 ## 🛠️ **11. Troubleshooting Notes**
 
-- ❗ `ErrImageNeverPull` → image not imported on worker
-- 🔧 NodePort required for external access in Vagrant
-- 🔒 Host-only network accessible only from Windows, not VM
-- 📌 Control-plane cannot curl NodePort (expected behavior)
+- ❗ ErrImageNeverPull → image not imported
+- 🧱 ImagePullBackOff → wrong namespace, must use -n k8s.io
+- 🔒 Control-plane cannot access NodePort in host-only mode
+- 🧩 NodePort required for external access
+- 🔧 If CNI fails, pods stay in ContainerCreating

@@ -17,6 +17,7 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 - Configuring **object storage (MinIO + S3 compatibility)**.
 - Implementing **MongoDB Replica Sets** for high availability and resilience.
 - Hosting **Jitsi Meet video-conferencing stack** using Docker Compose automation.
+- Deploying **Puppet Frontend** on Kubernetes using Vagrant-based automated provisioning.
 ---
 
 ## 🧱 Architecture Summary
@@ -29,6 +30,7 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 | Task-05 | MinIO Object Storage | S3 Storage • Persistence • mc Client Automation | unikrew-task05-minio-storage |
 | Task-06 | MongoDB Replica Air-Gap Setup | MongoDB 6.x • Replica Set • KeyFile Auth • Hybrid Sync | unikrew-task06-mongodb-replica-airgap |
 | Task-07 | Jitsi Meet Video Conferencing | Docker Compose • Vagrant Provisioning • Prosody • Jicofo • JVB • Web UI | unikrew-task07-jitsi-meet-dockerized |
+| Task-08 | Puppet Frontend Deployment on Kubernetes | Vagrant • Containerd • Kubeadm • NodePort Service | unikrew-task08-puppet-k8s |
 
 ---
 
@@ -99,6 +101,14 @@ Prosody (XMPP 5222/5347) ←→ Jicofo ←→ JVB (UDP 10000)
                              
                          Ubuntu VM (192.168.56.80)
 ```
+### 8️⃣ Puppet Frontend Deployment on Kubernetes
+
+- Automated provisioning of a **multi-node Kubernetes cluster** using Vagrant.
+- Installed **containerd, kubeadm, kubelet, kubectl** on both nodes.
+- Imported Puppet image into containerd using `ctr -n k8s.io`.
+- Deployed Puppet Frontend using **Deployment + NodePort Service**.
+- Validated external access via `http://192.168.56.11:30080`.
+- Gained deeper understanding of Kubernetes networking, CNI, and offline image handling.
 
 
 ---
