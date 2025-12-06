@@ -1,0 +1,1 @@
+{"virtualbox":{"/shared":{"guestpath":"/shared","hostpath":"C:/Users/WAJIZ.PK/Downloads/Puppet k8s setup/shared","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/WAJIZ.PK/Downloads/Puppet k8s setup","disabled":false,"__vagrantfile":true}}}

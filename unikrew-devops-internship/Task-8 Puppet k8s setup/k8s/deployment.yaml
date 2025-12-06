@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: puppet-frontend
+  labels:
+    app: puppet-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puppet-frontend
+  template:
+    metadata:
+      labels:
+        app: puppet-frontend
+    spec:
+      containers:
+      - name: puppet-frontend
+        image: unikrew.azurecr.io/puppet-frontend:mmbl-qa-36971
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80

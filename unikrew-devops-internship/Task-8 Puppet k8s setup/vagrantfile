@@ -1,0 +1,38 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+
+  # Shared folder for join.sh
+  config.vm.synced_folder "./shared", "/shared"
+
+  # -------------------------------
+  # MASTER NODE
+  # -------------------------------
+  config.vm.define "master" do |master|
+    master.vm.hostname = "master"
+    master.vm.network "private_network", ip: "192.168.56.10"
+
+    master.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus = 2
+    end
+
+    # Because the scripts are in ./scripts/
+    master.vm.provision "shell", path: "scripts/master.sh"
+  end
+
+  # -------------------------------
+  # WORKER NODE
+  # -------------------------------
+  config.vm.define "worker1" do |worker|
+    worker.vm.hostname = "worker1"
+    worker.vm.network "private_network", ip: "192.168.56.11"
+
+    worker.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus = 2
+    end
+
+    # Correct path
+    worker.vm.provision "shell", path: "scripts/worker.sh"
+  end
+end
