@@ -1,4 +1,4 @@
-# 🚀 UniKrew DevOps Internship — Hands-on Lab Series (Tasks 01 → 07)
+# 🚀 UniKrew DevOps Internship — Hands-on Lab Series (Tasks 01 → 08)
 
 ## 📘 Internship Overview
 
