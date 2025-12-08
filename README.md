@@ -21,7 +21,7 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 
 ## 🧱 Architecture Summary
 | 🧩 Task | 🎯 Focus Area | 🛠️ Core Technologies | 📁 Repo / Folder |
-|----------|---------------|----------------------|------------------|
+|----------|---------------|------`----------------|------------------|
 | Task-01 | Containerd Air-Gap Lab | Vagrant • Containerd • Offline Image Sync • Systemd | unikrew-task01-containerd-airgap |
 | Task-02 | Jenkins + GitLab Integration | Multi-VM CI/CD • Maven Build • SCM Trigger • Artifacts | unikrew-task02-jenkins-gitlab |
 | Task-03 | Kubernetes + NGINX Ingress | Kubeadm Cluster • Calico CNI • Ingress Controller | unikrew-task03-kubernetes-nginx |
