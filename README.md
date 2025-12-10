@@ -9,6 +9,7 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 ---
 
 ## 💡 Practical Experience Gained
+
 - Designing **air-gapped infrastructures** for secure offline image management.
 - Building **CI/CD pipelines** integrating Jenkins, GitLab, and artifact repositories.
 - Deploying **multi-node Kubernetes clusters** with Calico CNI + Ingress controllers.
@@ -17,19 +18,21 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 - Implementing **MongoDB Replica Sets** for high availability and resilience.
 - Hosting **Jitsi Meet video-conferencing stack** using Docker Compose automation.
 - Deploying **Puppet Frontend** on Kubernetes using Vagrant-based automated provisioning.
+
 ---
 
 ## 🧱 Architecture Summary
-| 🧩 Task | 🎯 Focus Area | 🛠️ Core Technologies | 📁 Repo / Folder |
-|----------|---------------|------`----------------|------------------|
-| Task-01 | Containerd Air-Gap Lab | Vagrant • Containerd • Offline Image Sync • Systemd | unikrew-task01-containerd-airgap |
-| Task-02 | Jenkins + GitLab Integration | Multi-VM CI/CD • Maven Build • SCM Trigger • Artifacts | unikrew-task02-jenkins-gitlab |
-| Task-03 | Kubernetes + NGINX Ingress | Kubeadm Cluster • Calico CNI • Ingress Controller | unikrew-task03-kubernetes-nginx |
-| Task-04 | Rancher + Kong Gateway | K3s Cluster • Rancher UI • Kong API Gateway (DB-less) | unikrew-task04-rancher-kong |
-| Task-05 | MinIO Object Storage | S3 Storage • Persistence • mc Client Automation | unikrew-task05-minio-storage |
-| Task-06 | MongoDB Replica Air-Gap Setup | MongoDB 6.x • Replica Set • KeyFile Auth • Hybrid Sync | unikrew-task06-mongodb-replica-airgap |
-| Task-07 | Jitsi Meet Video Conferencing | Docker Compose • Vagrant Provisioning • Prosody • Jicofo • JVB • Web UI | unikrew-task07-jitsi-meet-dockerized |
-| Task-08 | Puppet Frontend Deployment on Kubernetes | Vagrant • Containerd • Kubeadm • NodePort Service | unikrew-task08-puppet-k8s |
+
+| 🧩 Task     | 🎯 Focus Area                            | 🛠️ Core Technologies                                                    | 📁 Repo / Folder                        |
+| ----------- | ---------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------- |
+| **Task-01** | Containerd Air-Gap Lab                   | Vagrant • Containerd • Offline Image Sync • Systemd                     | `unikrew-task01-containerd-airgap`      |
+| **Task-02** | Jenkins + GitLab Integration             | Multi-VM CI/CD • Maven Build • SCM Trigger • Artifacts                  | `unikrew-task02-jenkins-gitlab`         |
+| **Task-03** | Kubernetes + NGINX Ingress               | Kubeadm Cluster • Calico CNI • Ingress Controller                       | `unikrew-task03-kubernetes-nginx`       |
+| **Task-04** | Rancher + Kong Gateway                   | K3s Cluster • Rancher UI • Kong API Gateway (DB-less)                   | `unikrew-task04-rancher-kong`           |
+| **Task-05** | MinIO Object Storage                     | S3 Storage • Persistence • mc Client Automation                         | `unikrew-task05-minio-storage`          |
+| **Task-06** | MongoDB Replica Air-Gap Setup            | MongoDB 6.x • Replica Set • KeyFile Auth • Hybrid Sync                  | `unikrew-task06-mongodb-replica-airgap` |
+| **Task-07** | Jitsi Meet Video Conferencing            | Docker Compose • Vagrant Provisioning • Prosody • Jicofo • JVB • Web UI | `unikrew-task07-jitsi-meet-dockerized`  |
+| **Task-08** | Puppet Frontend Deployment on Kubernetes | Vagrant • Containerd • Kubeadm • NodePort Service                       | `unikrew-task08-puppet-k8s`             |
 
 ---
 
@@ -66,7 +69,6 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 - Configured persistent volume (`/mnt/data`) and predefined `mc` alias.
 - Created test bucket **devops-lab** and verified uploads via CLI and web console.
 
-
 ### 6️⃣ MongoDB Hybrid Air-Gap Replica Set
 
 - Built a **3-node MongoDB Replica Set** across air-gapped VMs.
@@ -74,6 +76,7 @@ Each lab environment is automated using **Vagrant + Bash**, simulating **real-wo
 - Automated replication and fail-over via **Bash scripts**.
 
 ### 🧱 Architecture
+
 ```
 mongo-1 (Primary) → mongo-2 (Secondary) → mongo-3 (Secondary)
 Network: 192.168.56.0/24
@@ -81,25 +84,28 @@ Replica Set Name: rs0
 ```
 
 ### ⚙️ Provisioning Highlights
+
 - **Phase 1:** Standalone Air-Gap Install (.deb cache + local APT)
 - **Phase 2:** Replica Automation → `rs.initiate()` + `db.createUser()`
 - **Verification:** via `rs.status()` and authenticated logins
 
-
 ### 7️⃣ Jitsi Meet Dockerized Deployment
+
 - Automated **self-hosted Jitsi Meet** stack with **Vagrant + Docker Compose**.
 - Deployed **Prosody (XMPP)**, **Jicofo (Focus)**, **JVB (Video Bridge)**, and **Web UI** containers.
 - Accessed secure conference via **https://192.168.56.80:8443**.
 - Validated **real-time media flow (UDP 10000)** and **container integration**.
 
 ### 🧱 Architecture Overview
+
 ```
 Client ↔ Web (8443 HTTPS)
       ↕
 Prosody (XMPP 5222/5347) ←→ Jicofo ←→ JVB (UDP 10000)
-                             
+
                          Ubuntu VM (192.168.56.80)
 ```
+
 ### 8️⃣ Puppet Frontend Deployment on Kubernetes
 
 - Automated provisioning of a **multi-node Kubernetes cluster** using Vagrant.
@@ -109,17 +115,13 @@ Prosody (XMPP 5222/5347) ←→ Jicofo ←→ JVB (UDP 10000)
 - Validated external access via `http://192.168.56.11:30080`.
 - Gained deeper understanding of Kubernetes networking, CNI, and offline image handling.
 
-
 ---
-
 
 # 🆕 Additional Learning & Responsibilities
 
 These items represent additional systems, tools, and concepts explored during the UniKrew Solutions DevOps Internship. Some were theoretical learnings used widely in fintech systems, while others involved hands-on troubleshooting and operational exposure.
 
-
 ## 📘 Additional Systems & Concepts Learned
-
 
 - **VideoKYC Platform (Fintech Verification Flow)**  
   Learned how digital KYC calls work: WebRTC sessions, meeting lifecycle, agent/customer flows, and backend verification APIs used in fintech onboarding.
@@ -136,10 +138,7 @@ These items represent additional systems, tools, and concepts explored during th
 - **Rancher Enterprise Kubernetes Platform**  
   Gained conceptual understanding of multi-cluster management, node roles, workloads, UI-driven deployments, and cluster health monitoring.
 
-
-
 ## 🛠️ Troubleshooting & Operational Experience
-
 
 During the internship, I assisted with real DevOps troubleshooting across UAT and production-like environments:
 
@@ -166,26 +165,26 @@ During the internship, I assisted with real DevOps troubleshooting across UAT an
 - **Practical Scrum & Agile Exposure**  
   Attended daily standups, understood sprint goals, task estimation, backlog refinement, and how DevOps activities integrate into Scrum cycles within a fintech engineering team.
 
-
-
-👉 *These troubleshooting tasks strengthened my ability to work in production-like environments, improving service stability, debugging skills, and overall operational awareness.*
+👉 _These troubleshooting tasks strengthened my ability to work in production-like environments, improving service stability, debugging skills, and overall operational awareness._
 
 ---
+
 ## 🧠 Skills and Technologies Demonstrated
-| Category | Stack / Concepts |
-|-----------|------------------|
-| Provisioning & Automation | Vagrant • Bash Scripting • IaC Concepts |
-| CI/CD & DevOps Tools | Jenkins • GitLab CI/CD |
-| Containers & Orchestration | Containerd • Docker • Kubernetes • K3s |
-| Networking & Ingress | Calico • Traefik • Kong Gateway • NGINX Ingress |
-| Storage & Data Management | MinIO • S3 API • Persistent Volumes • MongoDB Replica |
-| Collaboration Platform | Jitsi Meet • Docker Compose • Media Bridges |
-| Management & Monitoring | Rancher • kubectl • Systemd Units |
+
+| Category                   | Stack / Concepts                                      |
+| -------------------------- | ----------------------------------------------------- |
+| Provisioning & Automation  | Vagrant • Bash Scripting • IaC Concepts               |
+| CI/CD & DevOps Tools       | Jenkins • GitLab CI/CD                                |
+| Containers & Orchestration | Containerd • Docker • Kubernetes • K3s                |
+| Networking & Ingress       | Calico • Traefik • Kong Gateway • NGINX Ingress       |
+| Storage & Data Management  | MinIO • S3 API • Persistent Volumes • MongoDB Replica |
+| Collaboration Platform     | Jitsi Meet • Docker Compose • Media Bridges           |
+| Management & Monitoring    | Rancher • kubectl • Systemd Units                     |
 
 ---
-
 
 ## ⚙️ General Setup Workflow
+
 ```bash
 # 1️⃣ Clone the desired task repo
 git clone https://github.com/MaazK111/unikrew-task06-mongodb-replica-airgap.git
@@ -206,6 +205,7 @@ vagrant destroy -f
 ---
 
 ## 🧾 Reflection
+
 This internship reinforced my ability to **design, automate, and secure complex DevOps ecosystems** — covering runtime, CI/CD, networking, storage, replication, and communication infrastructure.  
 Each task was built as a **mini production lab** with reproducible scripts and detailed documentation.
 
